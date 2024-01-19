@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import ProductList from '../containers/ProductList/productList';
-import ProductDetails from '../containers/productDetails';
+import ProductDetails from '../containers/productDetails/productDetails';
 import Header from '../containers/Header/header';
 const Routing = () => {
   return (
