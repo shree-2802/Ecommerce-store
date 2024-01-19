@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { setProducts } from '../../redux/actions/productActions';
 import './productList.scss';
 const ProductList = () => {
+  const navigate = useNavigate();
   const products = useSelector((state) => state);
   const AllProducts = products.allProducts.products;
   const dispatch = useDispatch();
@@ -19,13 +21,15 @@ const ProductList = () => {
   useEffect(() => {
     fetchProduct();
   }, []);
-  console.log(products, '  ', AllProducts);
-
   return (
     <div className='app__product--container'>
-      {AllProducts.map((item, index) => {
+      {AllProducts.map((item) => {
         return (
-          <div key={index} className='app__product--container-item'>
+          <div
+            key={item.id}
+            className='app__product--container-item'
+            onClick={() => navigate(`/product/${item.id}`)}
+          >
             <div className='image'>
               <img src={item.image} alt='image' />
             </div>
